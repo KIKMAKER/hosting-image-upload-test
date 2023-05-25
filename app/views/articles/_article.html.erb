@@ -4,9 +4,17 @@
     <%= article.title %>
   </p>
 
+
   <p>
     <strong>Body:</strong>
     <%= article.body %>
+    <br>
+    <% if article.photos.attached? %>
+
+    <%= cl_image_tag article.photos.first.key,
+      width: 150, height: 150, crop: :thumb, gravity: :face %>
+    <% end %>
+
   </p>
 
 </div>

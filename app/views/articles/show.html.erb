@@ -1,5 +1,5 @@
 <p style="color: green"><%= notice %></p>
-
+<br>
 <%= render @article %>
 
 <div>
@@ -7,4 +7,13 @@
   <%= link_to "Back to articles", root_path %>
 
   <%= button_to "Destroy this article", @article, method: :delete %>
+</div>
+
+<% if @article.photos.attached? %>
+<% @article.photos.each do |photo| %>
+<div class="card-category"
+  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 300, crop: :fill %>')"
+>
+<% end %>
+<% end %>
 </div>
